@@ -1,179 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Management</title>
-    <style>
-       
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 40px auto;
-    padding: 0 20px;
-    max-width: 900px;
-    background-color: #f4f6f8;
-    color: #333;
-    line-height: 1.6;
-}
-
-h2 {
-    text-align: center;
-    color: #2c3e50;
-    margin-bottom: 30px;
-    font-size: 2em;
-    border-bottom: 2px solid #2ecc71;
-    padding-bottom: 10px;
-}
-
-form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 25px;
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-form input {
-    flex: 1;
-    min-width: 220px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 1em;
-    transition: border-color 0.3s ease;
-}
-
-form input:focus {
-    border-color: #3498db;
-    outline: none;
-}
-
-form button {
-    padding: 10px 20px;
-    background-color: #2ecc71;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-form button:hover {
-    background-color: #27ae60;
-    transform: scale(1.05);
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-th, td {
-    padding: 14px 18px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    font-size: 0.95em;
-}
-
-thead {
-    background-color: #3498db;
-    color: white;
-    text-transform: uppercase;
-    font-size: 0.95em;
-    letter-spacing: 0.5px;
-}
-
-tbody tr:hover {
-    background-color: #f1f1f1;
-}
-
-.action-btn {
-    padding: 6px 14px;
-    margin-right: 6px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9em;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
-}
-
-.edit-btn {
-    background-color: #f1c40f;
-    color: white;
-    font-size: large;
-       font-weight: 200;
-
-}
-
-.delete-btn {
-    background-color: #e74c3c;
-    color: white ;
-      font-size: large;
-      font-weight: 200;
-}
-
-.edit-btn:hover {
-    background-color: #d4ac0d;
-}
-
-.delete-btn:hover {
-    background-color: #c0392b;
-}
-
-/* Responsive Tweaks */
-@media (max-width: 600px) {
-    form {
-        flex-direction: column;
-        gap: 15px;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Employee Management</title>
+  <style>
+    * {
+      box-sizing: border-box;
     }
 
-    form input, form button {
-        width: 100%;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0 auto;
+      padding: 20px;
+      max-width: 900px;
+      background-color: #f4f6f8;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 30px;
+      font-size: 2em;
+      border-bottom: 2px solid #2ecc71;
+      padding-bottom: 10px;
+    }
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 25px;
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    form input {
+      flex: 1;
+      min-width: 220px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1em;
+      transition: border-color 0.3s ease;
+    }
+
+    form input:focus {
+      border-color: #3498db;
+      outline: none;
+    }
+
+    form button {
+      padding: 10px 20px;
+      background-color: #2ecc71;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    form button:hover {
+      background-color: #27ae60;
+      transform: scale(1.05);
+    }
+
+    .table-container {
+      overflow-x: auto;
+      border-radius: 8px;
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
     }
 
     th, td {
-        font-size: 0.9em;
+      padding: 14px 18px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+      font-size: 0.95em;
+    }
+
+    thead {
+      background-color: #3498db;
+      color: white;
+      text-transform: uppercase;
+      font-size: 0.95em;
+      letter-spacing: 0.5px;
+    }
+
+    tbody tr:hover {
+      background-color: #f1f1f1;
     }
 
     .action-btn {
+      padding: 6px 14px;
+      margin-right: 6px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9em;
+      font-weight: 500;
+    }
+
+    .edit-btn {
+      background-color: #f1c40f;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      padding: 10px 16px;
+    }
+
+    .delete-btn {
+      background-color: #e74c3c;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      padding: 10px 16px;
+    }
+
+    .edit-btn:hover {
+      background-color: #d4ac0d;
+    }
+
+    .delete-btn:hover {
+      background-color: #c0392b;
+    }
+
+    /* Responsive Tweaks */
+    @media (max-width: 768px) {
+      form {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      form input, form button {
+        width: 100%;
+      }
+
+      th, td {
+        font-size: 0.9em;
+      }
+
+      .action-btn {
         padding: 6px 10px;
         font-size: 0.85em;
+      }
     }
-}
 
-    </style>
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 1.5em;
+      }
+
+      form input, form button {
+        font-size: 1em;
+      }
+
+      table {
+        font-size: 0.85em;
+      }
+      .edit-btn{
+        margin-bottom: 2px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h2>Employee Management Portal</h2>
-    <form id="employee-form">
-        <input type="text" id="name" placeholder="Name" required>
-        <input type="email" id="email" placeholder="Email"  required>
-        <input type="role" id="role" placeholder="Role" required>
-        <button type="submit">Add Employee</button>
-    </form>
+  <h2>Employee Management Portal</h2>
+  <form id="employee-form">
+    <input type="text" id="name" placeholder="Name" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="text" id="role" placeholder="Role" required />
+    <button type="submit">Add Employee</button>
+  </form>
+
+  <div class="table-container">
     <table id="employee-table">
-        <thead>
-            <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Action</th>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Action</th>
         </tr>
-        </thead>
-        
-     <tbody id="employeeTableBody"></tbody>
+      </thead>
+      <tbody id="employeeTableBody"></tbody>
     </table>
-    <script src="./app.js"> </script>
+  </div>
+
+  <script src="./app.js"></script>
 </body>
 </html>
