@@ -50,25 +50,28 @@ form.addEventListener("submit", function(e)
 
 
 // TABLE RENDER
-    function renderTable()
-    {
-        tableBody.innerHTML= "";
-        employees.forEach((emp,index)=>{
-            const row = document.createElement("tr");
-            row.innerHTML = `
-            <td>${emp.name}</td>
-            <td>${emp.email}</td>
-            <td>${emp.role}</td>
 
-             <td class="action-btn">
+
+function renderTable() {
+    const tableBody = document.querySelector("tbody");
+    tableBody.innerHTML = "";
+    employees.forEach((employee, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${employee.name}</td>
+            <td>${employee.email}</td>
+            <td>${employee.role}</td>
+            <td class="action-btn">
                 <button class="edit-btn" onclick="editEmployee(${index})">Edit</button>
                 <button class="delete-btn" onclick="deleteEmployee(${index})">Delete</button>
             </td>
-            `
-            tableBody.appendChild(row);
-        })
+        `;
+        tableBody.appendChild(row);
+    });
+}
 
-    }
+
 
     // EDIT EMPLOYEE    
     function editEmployee(index){
