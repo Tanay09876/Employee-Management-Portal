@@ -68,7 +68,8 @@ Employee-Management-Portal/
 
 ## 🖥️ Screenshots
 
-> *(Add screenshots of your app UI here for better documentation)*
+![image](https://github.com/user-attachments/assets/d98fc743-c395-4ad9-a0c2-ee02cfe93b9a)
+
 
 ## 📌 Future Enhancements
 
